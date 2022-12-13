@@ -7,6 +7,7 @@ import CardTour from '../../DataDummy/CardTour'
 export default function TourCardSection() {
 
     const navigate = useNavigate()
+
     return (
         <>
             <section className='tour-card-section'>
@@ -16,7 +17,7 @@ export default function TourCardSection() {
                         {CardTour.map((items) => (
                             <div className="col-sm-4 d-flex justify-content-center mb-5">
                                 <Card className='border-0' style={{ width: '18rem' }}
-                                    onClick={() => { navigate(`/detail`) }}
+                                    onClick={() => { navigate(`/detail/${items.index}`) }}
                                 >
                                     <Card.Img className='pointer' variant="top" src={items.image} alt='' />
                                     <Card.Body>

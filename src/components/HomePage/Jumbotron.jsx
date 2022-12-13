@@ -8,7 +8,7 @@ export default function Jumbotron() {
     return (
         <>
 
-            <section className='header-section pt-5'>
+            <section className='header-section pt-5 mt-0'>
                 <div className='d-flex justify-content-center'>
                     <div className='header-greet text-white d-flex justify-content-center flex-column pt-5 mt-5'>
                         <p className='text-header-greet '>Explore</p>

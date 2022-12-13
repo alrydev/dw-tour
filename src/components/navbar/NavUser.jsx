@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import IconLogo from '../../assets/images/Iconlogo.png'
@@ -11,15 +12,17 @@ import Register from '../Modals/Register';
 
 export default function NavUser() {
 
+    const navigate = useNavigate()
+
     const [modalLogin, setModalLogin] = useState(false)
     const [modalRegister, setModalRegister] = useState(false)
 
     return (
         <>
-            <Navbar>
+            <Navbar className='fixed-top' >
                 <Container>
                     <Navbar.Brand href="#home">
-                        <img src={IconLogo} alt='' ></img>
+                        <img onClick={() => navigate("/")} src={IconLogo} alt='' ></img>
                     </Navbar.Brand>
 
                     <div>

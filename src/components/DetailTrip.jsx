@@ -1,7 +1,9 @@
 import React from 'react'
 import { Stack, Button } from 'react-bootstrap'
+import { useParams, useNavigate } from 'react-router-dom'
+import CardTour from '../DataDummy/CardTour'
 
-import coverdetail from '../assets/images/detailTrip/coverdetail.png'
+// import coverdetail from '../assets/images/detailTrip/coverdetail.png'
 import detailTrip1 from '../assets/images/detailTrip/detailTrip1.png'
 import detailTrip2 from '../assets/images/detailTrip/detailTrip2.png'
 import detailTrip3 from '../assets/images/detailTrip/detailTrip3.png'
@@ -13,23 +15,27 @@ import timeIcon from '../assets/images/detailTrip/timeIcon.png'
 import dateIcon from '../assets/images/detailTrip/dateIcon.png'
 
 export default function DetailTrip() {
+
+    const navigate = useNavigate()
+    const { index } = useParams()
+
     return (
         <>
             <section className=''>
                 <div className='d-flex justify-content-center' >
                     <div className=' w-75'>
                         <h3>
-                            6D/4N Fun Tassie Vacation + Sydney
+                            {CardTour[index].title}
                         </h3>
                         <p>
-                            Australia
+                            {CardTour[index].country}
                         </p>
                     </div>
                 </div>
 
                 <Stack gap={2}>
                     <div className=" text-center">
-                        <img src={coverdetail} alt=''></img>
+                        <img src={CardTour[index].image} alt=''></img>
                     </div>
                     <div className=" d-flex justify-content-center">
                         <Stack direction="horizontal" gap={3}>
@@ -136,7 +142,9 @@ export default function DetailTrip() {
                 </div>
                 <div className='d-flex justify-content-center mt-5' >
                     <p className='w-75 text-end'>
-                        <Button className='text-white fw-bold ps-4 pe-4' variant="warning">Book Now</Button>
+                        <Button
+                            onClick={() => navigate("/booking")}
+                            className='text-white fw-bold ps-4 pe-4' variant="warning">Book Now</Button>
                     </p>
                 </div>
 
