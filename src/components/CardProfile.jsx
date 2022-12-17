@@ -15,12 +15,6 @@ export default function CardProfile() {
 
     const dataLogin = JSON.parse(localStorage.getItem("DATA_LOGIN"))
 
-    // let dataLoginn = [...dataLogin]
-
-    // let [newImage, setNewImage] = useState(dataLoginn[0].image)
-
-
-
     return (
         <>
             <div className='pt-3 pb-2 d-flex justify-content-center mt-5'>

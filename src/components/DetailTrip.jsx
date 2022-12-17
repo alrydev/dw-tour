@@ -62,7 +62,7 @@ export default function DetailTrip() {
         LessCounter()
     }
 
-    // =========================== TRANSACTION ============================
+    // =========================== BOOKING ============================
 
     const isLogin = JSON.parse(localStorage.getItem("DATA_LOGIN"))
 
@@ -85,7 +85,7 @@ export default function DetailTrip() {
 
     // const booking = []
 
-    const dataBooking = { name, phone, dateTrip, totalPayment, titleTrip, qty, country, dateTrip, day, night, accomodation, transport, statusBooking }
+    const dataBooking = { name, phone, dateTrip, totalPayment, titleTrip, qty, country, day, night, accomodation, transport, statusBooking }
 
 
     function pushBooking() {
@@ -94,14 +94,14 @@ export default function DetailTrip() {
         // localStorage.setItem("DATA_BOOKING", JSON.stringify(booking))
 
         // =================
-        let bookingData = []
-        const arrData = localStorage.getItem("DATA_BOOKING")
-        if (arrData !== null) {
-            bookingData = JSON.parse(arrData)
-        }
+        // let bookingData = []
+        // const arrData = localStorage.getItem("DATA_BOOKING")
+        // if (arrData !== null) {
+        //     bookingData = JSON.parse(arrData)
+        // }
 
-        bookingData.push(dataBooking)
-        localStorage.setItem("DATA_BOOKING", JSON.stringify(bookingData))
+        // bookingData.push(dataBooking)
+        localStorage.setItem("DATA_BOOKING", JSON.stringify(dataBooking))
     }
 
 

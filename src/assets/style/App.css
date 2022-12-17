@@ -64,6 +64,18 @@
   width: 85%;
 }
 
+.width-100 {
+  width: 100% !important;
+}
+
+.w-customm {
+  width: 100rem;
+}
+
+/* .pe-custom {
+  padding-right: 20rem;
+} */
+
 .mt-min {
   margin-top: -5rem;
 }

@@ -78,12 +78,11 @@ export default function CardAddTrip() {
                 <Form className='w-50 mb-5' onSubmit={handleOnSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className='fw-bold'>Title Trip</Form.Label>
-                        <Form.Control name='title' onChange={handleChange} className='bg-lightgrey border-0' type="text" />
+                        <Form.Control name='title' onChange={handleChange} className='bg-lightgrey border-0 w-100' type="text" />
                     </Form.Group>
-
                     <Form.Group className="mb-3">
-                        <Form.Label className='dp-block w-100 fw-bold' >Country</Form.Label>
-                        <CountryDropdown id="UNIQUE_ID" className='YOUR_CSS_CLASS bg-lightgrey border-0  w-100 rounded ' preferredCountries={['us']} value="" name='country' handleChange={(e) => setFormTrip({ ...formTrip, country: e.target.value })} />
+                        <Form.Label className='w-100 fw-bold' >Country</Form.Label>
+                        <CountryDropdown className=' bg-lightgrey border-0 w-100 rounded ' preferredCountries={['us']} value="" name='country' handleChange={(e) => setFormTrip({ ...formTrip, country: e.target.value })} />
                     </Form.Group>
 
                     <Form.Group className="mb-3">

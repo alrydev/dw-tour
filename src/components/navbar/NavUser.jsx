@@ -14,6 +14,10 @@ import { Container, Navbar, Button, Overlay, Popover, Stack } from 'react-bootst
 import Login from '../Modals/Login';
 import Register from '../Modals/Register';
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const Swal2 = withReactContent(Swal)
+
 export default function NavUser() {
 
     const navigate = useNavigate()
@@ -46,10 +50,17 @@ export default function NavUser() {
                 user.push(element)
                 localStorage.setItem("DATA_LOGIN", JSON.stringify(user))
                 setModalLogin(false)
-                alert("log in success")
-            }
-            else {
-                console.log(isLogin);
+
+                Swal2.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'LOGIN SUCCESS',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                // alert("log in success")
+            } else {
+                alert("email or password is not registered")
             }
         })
     }

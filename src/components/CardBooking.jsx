@@ -6,7 +6,7 @@ import iconBooking from '../assets/images/iconBooking.png'
 
 function CardBooking() {
 
-    const Booking = JSON.parse(localStorage.getItem("DATA_BOOKING"))
+
 
 
 
@@ -104,7 +104,7 @@ function CardBooking() {
                             </tbody>
                         </Table>
                     </section>
-                </Card>;
+                </Card>
             </div>
         </>
     )

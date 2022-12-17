@@ -6,12 +6,75 @@ import { useNavigate } from 'react-router-dom';
 import iconBooking from '../assets/images/iconBooking.png'
 
 function CardPay() {
+
     const [modalConfirm, setConfirm] = useState(false);
 
     const closeConfirm = () => setConfirm(false);
     const showConfirm = () => setConfirm(true);
 
-    // const Booking = JSON.parse(localStorage.getItem("DATA_BOOKING"))
+
+    // ================================= TRANSACTION ===========================================
+
+    const Booking = JSON.parse(localStorage.getItem("DATA_BOOKING"))
+
+    const name = Booking.name
+    const phone = Booking.phone
+    const dateTrip = Booking.dateTrip
+    const totalPayment = Booking.totalPayment
+    const titleTrip = Booking.titleTrip
+    const qty = Booking.qty
+    const country = Booking.country
+    const day = Booking.day
+    const night = Booking.night
+    const accomodation = Booking.accomodation
+    const transport = Booking.transport
+    const statusBooking = "approved"
+    const imagePaymentProof = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTTE_mtIITAWBA34PYlYGAF69KIEbNbgujjw&usqp=CAU"
+
+
+
+
+    const dataTrans = {
+        name, phone, dateTrip, totalPayment, titleTrip, qty, country, day, night, accomodation, transport, statusBooking, imagePaymentProof
+    }
+
+
+
+    const handleClick = () => {
+
+        let transaction = []
+        const arrData = localStorage.getItem("DATA_TRANSACTION")
+        if (arrData !== null) {
+            transaction = JSON.parse(arrData)
+        }
+
+        transaction.push(dataTrans)
+        localStorage.setItem("DATA_TRANSACTION", JSON.stringify(transaction))
+
+
+        // ================================
+
+        // transaction.push(dataTrans)
+        // localStorage.setItem("DATA_TRANSACTION", JSON.stringify(transaction))
+        console.log(transaction);
+    }
+
+    function someFunc() {
+        showConfirm()
+        handleClick()
+    }
+
+    // ================================================================
+    // let data = []
+    // const arrData = localStorage.getItem("DATA_USER")
+
+    // if (arrData !== null) {
+    //     data = JSON.parse(arrData)
+    // }
+
+    // data.push(form)
+    // localStorage.setItem("DATA_USER", JSON.stringify(data))
+    // ======================================================================
 
     const navigate = useNavigate()
 
@@ -36,7 +99,7 @@ function CardPay() {
                             <div className="">
                                 <Stack className='ms-3 me-3' gap={2}>
                                     <div className="">
-                                        <p className='fw-bold' >6D/4N Fun Tassie Vacation</p>
+                                        <p className='fw-bold' >{Booking.titleTrip}</p>
                                         {/* <p className='fw-light' >{Booking[0].country}</p> */}
                                     </div>
                                     <div className="d-flex justify-content-start">
@@ -50,19 +113,19 @@ function CardPay() {
                                 <Row className=" d-flex justify-content-between w-75">
                                     <Col sm={5}>
                                         <p className="fw-bold" >Date Trip</p>
-                                        <p>26 Agustus 2020</p>
+                                        <p>{Booking.dateTrip}</p>
                                     </Col>
                                     <Col sm={5}>
                                         <p className="fw-bold">Duration</p>
-                                        <p>6 Day 4 Night</p>
+                                        <p>{Booking.day} Day {Booking.night} Night</p>
                                     </Col>
                                     <Col sm={5}>
                                         <p className="fw-bold">Accomodation</p>
-                                        <p>Hotel 4 Nights</p>
+                                        <p>{Booking.accomodation}</p>
                                     </Col>
                                     <Col sm={5}>
                                         <p className="fw-bold">Transporation</p>
-                                        <p>Qatar Airways</p>
+                                        <p>{Booking.transport}</p>
                                     </Col>
                                 </Row>
                             </div>
@@ -91,11 +154,11 @@ function CardPay() {
                                 </tr>
                                 <tr>
                                     <td>1</td>
-                                    <td>Alri</td>
-                                    <td>Male</td>
-                                    <td>081234</td>
+                                    <td>{Booking.name}</td>
+                                    <td> - </td>
+                                    <td>{Booking.phone}</td>
                                     <td className='fw-bold'  >Qty : </td>
-                                    <td className='fw-bold text-center' >1</td>
+                                    <td className='fw-bold text-center' >{Booking.qty}</td>
                                 </tr>
                                 <tr>
                                     <td></td>
@@ -103,16 +166,16 @@ function CardPay() {
                                     <td></td>
                                     <td></td>
                                     <td className='fw-bold'>Total : </td>
-                                    <td className='fw-bold text-danger text-center'>IDR. 12.398.000 </td>
+                                    <td className='fw-bold text-danger text-center'>{Booking.totalPayment}</td>
                                 </tr>
 
                             </tbody>
                         </Table>
                     </section>
-                </Card>;
+                </Card>
             </div>
             <div className='w-80 d-flex justify-content-end mt-min mb-5'>
-                <Button variant="warning" className="px-5 text-light fw-bold" onClick={showConfirm} >PAY</Button>
+                <Button variant="warning" className="px-5 text-light fw-bold" onClick={someFunc} >PAY</Button>
             </div>
 
 

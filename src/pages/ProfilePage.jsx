@@ -2,8 +2,8 @@ import React from 'react'
 
 import CardProfile from '../components/CardProfile'
 import NavUser from '../components/navbar/NavUser'
-import CardBooking from '../components/CardBooking'
 import Footer from '../components/HomePage/Footer'
+import CardHistoryTrip from '../components/CardHistoryTrip'
 
 
 export default function ProfilePage() {
@@ -11,7 +11,7 @@ export default function ProfilePage() {
         <>
             <NavUser />
             <CardProfile />
-            <CardBooking />
+            <CardHistoryTrip />
             <Footer />
         </>
     )
