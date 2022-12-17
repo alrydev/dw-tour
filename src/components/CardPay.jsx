@@ -1,14 +1,19 @@
-import React from 'react'
-import { Card, Stack, Row, Col, Button, Table } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Card, Stack, Row, Col, Button, Table, Modal } from 'react-bootstrap'
 import { BsFileImage } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 // import Iconlogo from '../assets/images/Iconlogo.png'
 import iconBooking from '../assets/images/iconBooking.png'
 
-function CardBooking() {
+function CardPay() {
+    const [modalConfirm, setConfirm] = useState(false);
 
-    const Booking = JSON.parse(localStorage.getItem("DATA_BOOKING"))
+    const closeConfirm = () => setConfirm(false);
+    const showConfirm = () => setConfirm(true);
 
+    // const Booking = JSON.parse(localStorage.getItem("DATA_BOOKING"))
 
+    const navigate = useNavigate()
 
     return (
         <>
@@ -35,8 +40,8 @@ function CardBooking() {
                                         {/* <p className='fw-light' >{Booking[0].country}</p> */}
                                     </div>
                                     <div className="d-flex justify-content-start">
-                                        <Button className='text-orange mt-4 mb-4' variant="warning" size="sm" disabled>
-                                            Waiting Approved
+                                        <Button className='text-light mt-4 mb-4' variant="danger" size="sm" disabled>
+                                            Waiting Payment
                                         </Button>
                                     </div>
                                 </Stack>
@@ -106,8 +111,22 @@ function CardBooking() {
                     </section>
                 </Card>;
             </div>
+            <div className='w-80 d-flex justify-content-end mt-min mb-5'>
+                <Button variant="warning" className="px-5 text-light fw-bold" onClick={showConfirm} >PAY</Button>
+            </div>
+
+
+            <Modal show={modalConfirm} centered onHide={closeConfirm}>
+
+                <Modal.Body className='' >
+                    <p className='d-flex justify-content-center'>Your payment will be confirmed witin 1 x 24 hours</p>
+                    <p className='d-flex justify-content-center'>To see orders click<span onClick={() => navigate("/booking")} className='fw-bold pointer'>&nbsp; Here &nbsp;</span> thank you</p>
+                </Modal.Body>
+
+            </Modal>
+
         </>
     )
 }
 
-export default CardBooking
+export default CardPay

@@ -60,11 +60,36 @@
   cursor: pointer;
 }
 
+.w-80 {
+  width: 85%;
+}
+
+.mt-min {
+  margin-top: -5rem;
+}
+
 .text-orange {
   color: rgb(218, 58, 0) !important;
+}
+
+.text-trns {
+  color: rgba(240, 248, 255, 0);
+}
+
+.bg-trns {
+  background-color: rgba(240, 248, 255, 0);
+}
+
+.width-pop {
+  width: 10rem;
 }
 
 /* .widthbooking {
   background-color: yellow;
   width: 50rem;
 } */
+
+.navbarr {
+  background-image: url(../images/bgnav.png);
+  height: 11vh;
+}

@@ -2,11 +2,20 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-import CardTour from '../../DataDummy/CardTour'
-
 export default function TourCardSection() {
 
+
+    //get data trip local storage
+    const DataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
+    // const Trip = [...DataTrip]
+
     const navigate = useNavigate()
+
+    const formatRupiah = new Intl.NumberFormat(undefined, {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0,
+    })
 
     return (
         <>
@@ -14,10 +23,10 @@ export default function TourCardSection() {
                 <h2 className='text-center p-5'>GROUP TOUR</h2>
                 <div>
                     <div className="row">
-                        {CardTour.map((items) => (
+                        {DataTrip.map((items) => (
                             <div className="col-sm-4 d-flex justify-content-center mb-5">
-                                <Card className='border-0' style={{ width: '18rem' }}
-                                    onClick={() => { navigate(`/detail/${items.index}`) }}
+                                <Card className='border-0 pointer' style={{ width: '18rem' }}
+                                    onClick={() => { navigate(`/detail/${items.idTrip}`) }}
                                 >
                                     <Card.Img className='pointer' variant="top" src={items.image} alt='' />
                                     <Card.Body>
@@ -26,7 +35,7 @@ export default function TourCardSection() {
                                         </Card.Title>
                                         <div className='d-flex justify-content-between'>
                                             <span className='fw-bold text-warning' >
-                                                {items.price}
+                                                {formatRupiah.format(items.price)}
                                             </span>
                                             <span className='fw-bold text-grey'>
                                                 {items.country}

@@ -1,27 +1,34 @@
 import React, { useState } from 'react'
-// import { useState } from 'react';
+
 
 import { Modal, Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const Swal2 = withReactContent(Swal)
 
-export default function Login({ modalLogin, setModalLogin, switchRegister }) {
+export default function Login({ modalLogin, setModalLogin, switchRegister, LoginFunction }) {
 
-
-    const [form, setForm] = useState({
+    const [formLogin, setFormLogin] = useState({
         email: "",
         password: "",
+        role: "user"
     })
 
-    const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value,
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        LoginFunction(formLogin)
+
+        setModalLogin(false)
+
+        Swal2.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'LOGIN SUCCESS',
+            showConfirmButton: false,
+            timer: 3000
         })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(form);
-    }
 
     return (
         <>
@@ -34,16 +41,16 @@ export default function Login({ modalLogin, setModalLogin, switchRegister }) {
                 <Modal.Header className='d-flex justify-content-center'>
                     <h4 className='fw-bold' >Login</h4>
                 </Modal.Header>
-                <Form className='p-2' onSubmit={handleSubmit}>
+                <Form className='p-2' onSubmit={handleOnSubmit}>
 
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="fw-bold" >Email</Form.Label>
-                        <Form.Control className="bg-lightgrey border-0" name='email' onChange={handleChange} type="email" />
+                        <Form.Control id='email' className="bg-lightgrey border-0" name='email' onChange={(e) => setFormLogin({ ...formLogin, email: e.target.value })} type="email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label className="fw-bold">Password</Form.Label>
-                        <Form.Control className="bg-lightgrey border-0" name='password' onChange={handleChange} type="password" />
+                        <Form.Control id='password' className="bg-lightgrey border-0" name='password' onChange={(e) => setFormLogin({ ...formLogin, password: e.target.value })} type="password" />
                     </Form.Group>
 
                     <Button className='w-100 bg-warning text-white fw-bolder mt-3' variant="warning" type="submit">

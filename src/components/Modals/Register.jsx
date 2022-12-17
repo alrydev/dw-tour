@@ -1,42 +1,63 @@
 import React, { useState } from 'react'
-// import { useState } from 'react';
 
-// import { UserContext } from '../../context/userContext';
 import { Modal, Form, Button } from 'react-bootstrap';
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+const Swal2 = withReactContent(Swal)
 
 export default function Register({ modalRegister, setModalRegister, switchLogin }) {
 
-    // const [state, dispatch] = useContext(UserContext)
-
-    const dataUser = []
-    const cek = localStorage.getItem("data_user")
-
     const [form, setForm] = useState({
+        name: "",
         email: "",
         password: "",
+        phone: "",
+        address: "",
+        gender: "",
+        image: "",
+        role: "user",
+
     })
 
-    const handleChange = (e) => {
+    const handleOnChange = (e) => {
         setForm({
             ...form,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleOnSubmit = (e) => {
         e.preventDefault()
 
-        dataUser.push(cek)
+        let data = []
+        const arrData = localStorage.getItem("DATA_USER")
 
-        localStorage.setItem("data_user", JSON.stringify(dataUser))
+        if (arrData !== null) {
+            data = JSON.parse(arrData)
+        }
 
-        console.log(dataUser);
+        data.push(form)
+        localStorage.setItem("DATA_USER", JSON.stringify(data))
+
+        setModalRegister(false)
+        switchLogin(true)
+
+
+        Swal2.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'REGISTER SUCCESS',
+            showConfirmButton: false,
+            timer: 2000
+        })
     }
 
     return (
         <>
             <Modal
-                size="sm"
+
+                size="md"
                 show={modalRegister}
                 onHide={() => setModalRegister(false)}
                 aria-labelledby="example-modal-sizes-title-lg"
@@ -44,24 +65,41 @@ export default function Register({ modalRegister, setModalRegister, switchLogin 
                 <Modal.Header className='d-flex justify-content-center'>
                     <h4 className='fw-bold' >Register</h4>
                 </Modal.Header>
-                {/* <p className='d-flex justify-content-center align-items-center p-3 fs-10'>
-                    Register
-                </p> */}
-                <Form className='m-3' onSubmit={handleSubmit}>
+                <Form className='m-3' onSubmit={handleOnSubmit} >
 
                     <Form.Group className="mb-3 " controlId="">
                         <Form.Label className="fw-bold">Full Name</Form.Label>
-                        <Form.Control className="bg-lightgrey border-0" name='name' onChange={handleChange} type="text" />
+                        <Form.Control className="bg-lightgrey border-0" name='name' onChange={handleOnChange} type="text" />
                     </Form.Group>
 
                     <Form.Group className="mb-3 " controlId="formBasicEmail">
                         <Form.Label className="fw-bold">Email</Form.Label>
-                        <Form.Control className="bg-lightgrey border-0" name='email' onChange={handleChange} type="email" />
+                        <Form.Control className="bg-lightgrey border-0" name='email' onChange={handleOnChange} type="email" />
                     </Form.Group>
 
                     <Form.Group className="mb-3 " controlId="formBasicPassword">
                         <Form.Label className="fw-bold">Password</Form.Label>
-                        <Form.Control className="bg-lightgrey border-0" name='password' onChange={handleChange} type="password" />
+                        <Form.Control className="bg-lightgrey border-0" name='password' onChange={handleOnChange} type="password" />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 " controlId="">
+                        <Form.Label className="fw-bold">Phone</Form.Label>
+                        <Form.Control className="bg-lightgrey border-0" name='phone' onChange={handleOnChange} type="text" />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 " controlId="">
+                        <Form.Label className="fw-bold">Address</Form.Label>
+                        <Form.Control className="bg-lightgrey border-0" name='address' onChange={handleOnChange} type="text-area" />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 " controlId="">
+                        <Form.Label className="fw-bold">Gender</Form.Label>
+                        <Form.Control className="bg-lightgrey border-0" name='gender' onChange={handleOnChange} type="text" placeholder='Male/Female' />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 " controlId="">
+                        <Form.Label className="fw-bold">Image</Form.Label>
+                        <Form.Control className="bg-lightgrey border-0" name='image' onChange={handleOnChange} type="text" />
                     </Form.Group>
 
                     <Button className='w-100 bg-warning text-white fw-bolder mt-3' variant="warning" type="submit">

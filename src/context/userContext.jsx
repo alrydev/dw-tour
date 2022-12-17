@@ -1,6 +1,6 @@
 import { createContext, useReducer } from "react";
 
-export const UserContext = createContext;
+export const UserContext = createContext();
 
 const InitialState = {
     isLogin: false,
@@ -11,20 +11,12 @@ const reducer = (state, action) => {
     const { type, payload } = action
 
     switch (type) {
-        case "USER_SUCCESS":
-        case "LOGIN_SUCCESS":
-            localStorage.setItem("data_login", payload.token)
+        case 'LOGIN_SUCCESS':
             return {
                 isLogin: true,
                 user: payload
             }
-        case "REGISTER_SUCCESS":
-            localStorage.setItem("data_user", payload.token)
-            return {
-                user: payload
-            }
-        case "LOGOUT":
-            localStorage.removeItem("data_login", payload.token)
+        case 'LOGOUT':
             return {
                 isLogin: false,
                 user: {}
