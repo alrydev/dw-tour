@@ -50,7 +50,6 @@ export default function NavUser() {
             }
             else {
                 console.log(isLogin);
-                // alert("email or password is wrong")
             }
         })
     }
