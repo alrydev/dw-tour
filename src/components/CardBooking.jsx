@@ -6,10 +6,6 @@ import iconBooking from '../assets/images/iconBooking.png'
 
 function CardBooking() {
 
-
-
-
-
     return (
         <>
             <div className='d-flex justify-content-center pt-5 mt-5 mb-5'>

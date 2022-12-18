@@ -1,12 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Button, Form, Card, Stack } from 'react-bootstrap';
 
 import HeaderCard from '../../DataDummy/HeaderCard';
 
-export default function Jumbotron() {
+
+
+
+export default function Jumbotron({ search, searchCountry, filteredTrips }) {
+
+    // let dataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
+
+    const handleChange = (e) => {
+        searchCountry({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault()
+        console.log(search)
+        // console.log(dataTrip)
+        console.log(filteredTrips)
+
+        let storeSearch = []
+        storeSearch.push(search)
+
+        localStorage.setItem("DATA_SEARCH", JSON.stringify(storeSearch))
+    }
+
+
     return (
         <>
+
+
 
             <section className='header-section pt-5 mt-0'>
                 <div className='d-flex justify-content-center'>
@@ -18,8 +45,8 @@ export default function Jumbotron() {
 
                 <div className='text-center fw-light' >
                     <p className='text-white' >Find great places to holiday</p>
-                    <Form className='d-flex justify-content-center' >
-                        <Form.Control className='w-50 rounded-0 border-0' type="text" placeholder='' />
+                    <Form onSubmit={handleOnSubmit} className='d-flex justify-content-center' >
+                        <Form.Control onChange={handleChange} className='w-50 rounded-0 border-0' type="text" placeholder='search countries' name='country' />
                         <Button variant="warning" type="submit" className='rounded-0 text-white fw-bold'>
                             Search
                         </Button>
@@ -27,6 +54,11 @@ export default function Jumbotron() {
                 </div>
 
             </section >
+
+            <section>
+                <p className='fw-bold fs-5'>search country:</p>
+
+            </section>
 
             <section className='header-section-bottom d-flex justify-content-center' >
                 <Stack direction="horizontal" gap={4}>

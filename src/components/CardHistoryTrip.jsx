@@ -8,20 +8,12 @@ import { Card, Stack, Button, Row, Col, Table } from 'react-bootstrap'
 export default function CardHistoryTrip() {
 
 
-    // function filter() {
     let dataLogin = JSON.parse(localStorage.getItem("DATA_LOGIN"))
-
     let dataHistory = JSON.parse(localStorage.getItem("DATA_TRANSACTION"))
 
     let filteredName = dataHistory.filter(function (e) {
         return e.name === dataLogin[0].name
     })
-    console.log(filteredName)
-    // console.log(filteredName[1])
-    // }
-    // function filter() {
-    //     console.log(filteredName);
-    // }
 
     return (
         <>
