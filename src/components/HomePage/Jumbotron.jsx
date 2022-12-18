@@ -7,9 +7,15 @@ import HeaderCard from '../../DataDummy/HeaderCard';
 
 
 
-export default function Jumbotron({ search, searchCountry, filteredTrips }) {
+export default function Jumbotron() {
+    // export default function Jumbotron({ search, searchCountry, filteredTrips }) {
 
     // let dataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
+
+
+
+    let [search, searchCountry] = useState()
+    let dataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
 
     const handleChange = (e) => {
         searchCountry({
@@ -18,15 +24,19 @@ export default function Jumbotron({ search, searchCountry, filteredTrips }) {
     }
 
     const handleOnSubmit = (e) => {
+        let filteredTrips = dataTrip.filter(function (e) {
+            return e.country === search.country
+        })
         e.preventDefault()
         console.log(search)
         // console.log(dataTrip)
         console.log(filteredTrips)
 
-        let storeSearch = []
-        storeSearch.push(search)
+        // let storeSearch = []
+        // storeSearch.push(search)
 
-        localStorage.setItem("DATA_SEARCH", JSON.stringify(storeSearch))
+        localStorage.setItem("DATA_SEARCH", JSON.stringify(filteredTrips))
+        window.location.reload()
     }
 
 
@@ -54,11 +64,6 @@ export default function Jumbotron({ search, searchCountry, filteredTrips }) {
                 </div>
 
             </section >
-
-            <section>
-                <p className='fw-bold fs-5'>search country:</p>
-
-            </section>
 
             <section className='header-section-bottom d-flex justify-content-center' >
                 <Stack direction="horizontal" gap={4}>

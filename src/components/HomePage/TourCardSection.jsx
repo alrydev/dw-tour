@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-export default function TourCardSection({ filteredTrips, search }) {
+export default function TourCardSection() {
 
 
     //get data trip local storage
@@ -18,6 +18,14 @@ export default function TourCardSection({ filteredTrips, search }) {
     })
 
 
+    // let dataFilter = JSON.parse(localStorage.getItem("DATA_SEARCH"))
+    // let dataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
+
+    // let filteredTrips = dataTrip.filter(function (e) {
+    //     return e.country === dataFilter.country
+    // })
+
+    let filteredTrips = JSON.parse(localStorage.getItem("DATA_SEARCH"))
 
     return (
         <>

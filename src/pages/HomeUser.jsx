@@ -9,12 +9,12 @@ export default function HomeUser() {
 
 
 
-    let [search, searchCountry] = useState()
-    let dataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
+    // let [search, searchCountry] = useState()
+    // let dataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
 
-    let filteredTrips = dataTrip.filter(function (e) {
-        return e.country === search.country
-    })
+    // let filteredTrips = dataTrip.filter(function (e) {
+    //     return e.country === search.country
+    // })
 
     // ====================================================================================
 
@@ -28,9 +28,14 @@ export default function HomeUser() {
     return (
         <>
             <NavUser />
+            <Jumbotron />
+            <TourCardSelection />
+            <Footer />
+
+            {/* <NavUser />
             <Jumbotron dataTrip={dataTrip} search={search} searchCountry={searchCountry} filteredTrips={filteredTrips} />
             <TourCardSelection search={search} filteredTrips={filteredTrips} />
-            <Footer />
+            <Footer /> */}
         </>
     )
 }
