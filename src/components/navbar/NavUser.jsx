@@ -125,7 +125,7 @@ export default function NavUser() {
                                                         <img src={profileIcon} alt=''></img>
                                                         profile
                                                     </div>
-                                                    <div className="d-flex justify-content-between align-items-center fw-bold pointer">
+                                                    <div onClick={() => navigate("/pay")} className="d-flex justify-content-between align-items-center fw-bold pointer">
                                                         <img src={payIcon} alt=''></img>
                                                         <span className='ps-3 w-50 text-center'>
                                                             pay

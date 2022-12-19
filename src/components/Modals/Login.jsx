@@ -11,32 +11,8 @@ export default function Login({ modalLogin, setModalLogin, switchRegister, Login
         password: "",
         role: "user"
     })
-    // ======================================================================
-    // let isLogin = JSON.parse(localStorage.getItem("DATA_USER"))
-
-    // const user = []
-
-    // const LoginFunction = (dataLogin) => {
-    //     isLogin.forEach((element) => {
-    //         if (
-    //             dataLogin.email === element.email &&
-    //             dataLogin.password === element.password
-    //         ) {
-    //             user.push(element)
-    //             localStorage.setItem("DATA_LOGIN", JSON.stringify(user))
-    //             setModalLogin(false)
-    //             alert("log in success")
-    //         }
-    //         else {
-    //             console.log(isLogin);
-    //         }
-    //     })
-    // }
-    //==============================================================================
 
     const handleOnSubmit = (e) => {
-
-
 
         e.preventDefault()
         LoginFunction(formLogin)
