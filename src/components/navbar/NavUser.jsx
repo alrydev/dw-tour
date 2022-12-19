@@ -115,8 +115,8 @@ export default function NavUser() {
                                                         </span>
                                                     </div>
                                                     <div onClick={() => navigate("/transaction")} className="d-flex justify-content-between align-items-center fw-bold pointer">
-                                                        {/* <img src={tripIcon} alt=''></img> */}
-                                                        <span className='ps-3 w-50 text-center'>
+                                                        <img src={tripIcon} alt=''></img>
+                                                        <span className='ps-3 w-100 text-center'>
                                                             transaction
                                                         </span>
                                                     </div>
