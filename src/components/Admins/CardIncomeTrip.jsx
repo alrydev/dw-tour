@@ -1,14 +1,18 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Card } from 'react-bootstrap'
-import CardTour from '../../DataDummy/CardTour.jsx'
 
 
 export default function CardIncomeTrip() {
 
-
-
     const navigate = useNavigate()
+
+    let dataIncome = JSON.parse(localStorage.getItem("DATA_TRIP"))
+    const formatRupiah = new Intl.NumberFormat(undefined, {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0,
+    })
 
 
 
@@ -19,10 +23,10 @@ export default function CardIncomeTrip() {
             </div>
 
             <section className='tour-card-section'>
-                <h2 className='text-center p-5'>INCOME TRIP (static dummy)</h2>
+                <h2 className='text-center p-5'>INCOME TRIP</h2>
                 <div>
                     <div className="row">
-                        {CardTour.map((items) => (
+                        {dataIncome.map((items) => (
                             <div className="col-sm-4 d-flex justify-content-center mb-5">
                                 <Card className='border-0 pointer' style={{ width: '18rem' }}
                                 >
@@ -35,7 +39,7 @@ export default function CardIncomeTrip() {
                                         </Card.Title>
                                         <div className='d-flex justify-content-between'>
                                             <span className='fw-bold text-warning' >
-                                                {items.price}
+                                                {formatRupiah.format(items.price)}
                                             </span>
                                             <span className='fw-bold text-grey'>
                                                 {items.country}
