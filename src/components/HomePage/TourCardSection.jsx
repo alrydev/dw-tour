@@ -4,11 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function TourCardSection() {
 
-
-    //get data trip local storage
     const DataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
-    // const Trip = [...DataTrip]
-
     const navigate = useNavigate()
 
     const formatRupiah = new Intl.NumberFormat(undefined, {
@@ -16,14 +12,6 @@ export default function TourCardSection() {
         currency: "IDR",
         maximumFractionDigits: 0,
     })
-
-
-    // let dataFilter = JSON.parse(localStorage.getItem("DATA_SEARCH"))
-    // let dataTrip = JSON.parse(localStorage.getItem("DATA_TRIP"))
-
-    // let filteredTrips = dataTrip.filter(function (e) {
-    //     return e.country === dataFilter.country
-    // })
 
     let filteredTrips = JSON.parse(localStorage.getItem("DATA_SEARCH"))
 
