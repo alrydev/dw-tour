@@ -31,8 +31,8 @@ export default function Register({ modalRegister, setModalRegister, switchLogin 
         e.preventDefault()
 
         let data = []
-        const arrData = localStorage.getItem("DATA_USER")
 
+        const arrData = localStorage.getItem("DATA_USER")
         if (arrData !== null) {
             data = JSON.parse(arrData)
         }

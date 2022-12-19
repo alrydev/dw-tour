@@ -26,9 +26,7 @@ export default function DetailTrip() {
     const navigate = useNavigate()
     const { index } = useParams()
 
-    // price of the trip
     let fixedPrice = Trips[index].price
-
     let [price, setCounter] = useState(Trips[index].price)
 
     function Add() {
@@ -142,7 +140,7 @@ export default function DetailTrip() {
 
                 <Stack gap={2}>
                     <div className=" text-center">
-                        <img src={Trips[index].image} alt=''></img>
+                        <img style={{ height: "70vh" }} src={Trips[index].image} alt=''></img>
                     </div>
                     <div className=" d-flex justify-content-center">
                         <Stack direction="horizontal" gap={3}>

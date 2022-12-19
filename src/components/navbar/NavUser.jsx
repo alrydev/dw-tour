@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import IconLogo from '../../assets/images/Iconlogo.png'
-import userNavIcon from '../../assets/images/userNavIcon.png'
 
 import profileIcon from '../../assets/images/profileIcon.png'
 import logoutIcon from '../../assets/images/logoutIcon.png'
@@ -58,10 +57,8 @@ export default function NavUser() {
                     showConfirmButton: false,
                     timer: 3000
                 })
-                // alert("log in success")
-            } else {
-                alert("email or password is not registered")
             }
+
         })
     }
 
@@ -86,7 +83,7 @@ export default function NavUser() {
 
     return (
         <>
-            <Navbar className='navbarr fixed-top mb-5' >
+            <Navbar className='navbarr fixed-top mb-5' style={{ height: "10vh" }} >
                 <Container>
                     <Navbar.Brand href="#home">
                         <img onClick={() => navigate("/")} src={IconLogo} alt='' ></img>

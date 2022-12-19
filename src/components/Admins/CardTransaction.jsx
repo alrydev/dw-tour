@@ -25,7 +25,6 @@ export default function CardTransaction() {
                 <Table className='w-75' striped bordered hover size="sm">
                     <thead>
                         <tr>
-                            <th>No</th>
                             <th>Users</th>
                             <th>Trip</th>
                             <th>Payment Proof</th>
@@ -36,7 +35,6 @@ export default function CardTransaction() {
                     <tbody>
                         {dataTrans.map((items) => (
                             <tr>
-                                <td>1</td>
                                 <td>{items.name}</td>
                                 <td>{items.titleTrip}</td>
                                 <td> - </td>
@@ -147,7 +145,12 @@ export default function CardTransaction() {
                                                 </tbody>
                                             </Table>
                                         </section>
-                                    </Card>;
+                                        <div className='d-flex justify-content-end gap-2'>
+                                            <Button variant="danger">cancel</Button>{' '}
+                                            <Button variant="success">approve</Button>{' '}
+
+                                        </div>
+                                    </Card>
                                 </div>
 
                             </Modal.Body>

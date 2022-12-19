@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { MdOutlineAttachFile } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 import { Form, Button, FloatingLabel } from 'react-bootstrap'
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
@@ -9,6 +9,8 @@ import withReactContent from 'sweetalert2-react-content'
 const Swal2 = withReactContent(Swal)
 
 export default function CardAddTrip() {
+
+    const navigate = useNavigate()
 
     const [formTrip, setFormTrip] = useState({
         idTrip: "",
@@ -35,7 +37,6 @@ export default function CardAddTrip() {
         })
     }
 
-    const trips = []
     const handleOnSubmit = (e) => {
         e.preventDefault()
 
@@ -47,11 +48,7 @@ export default function CardAddTrip() {
             dataTrip = JSON.parse(arrData)
         }
 
-        for (let i = 0; i < arrayData.length; i++) {
-            trips.push(arrayData[i])
-        }
         formTrip.idTrip = arrayData.length
-
         formTrip.price = parseInt(formTrip.price)
 
         dataTrip.push(formTrip)
@@ -66,6 +63,8 @@ export default function CardAddTrip() {
             showConfirmButton: false,
             timer: 2000
         })
+
+        navigate("/")
         // console.log(formTrip);
     }
 

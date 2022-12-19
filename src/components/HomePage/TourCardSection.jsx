@@ -30,7 +30,7 @@ export default function TourCardSection() {
     return (
         <>
             <section className='tour-card-section'>
-                <h2 className='text-start p-5'>SEARCH: </h2>
+                <h4 className='text-start p-5 text-secondary'>SEARCH: </h4>
                 <div>
                     <div className="row">
                         {filteredTrips.map((items) => (
@@ -67,7 +67,7 @@ export default function TourCardSection() {
                     <div className="row">
                         {DataTrip.map((items) => (
                             <div className="col-sm-4 d-flex justify-content-center mb-5">
-                                <Card className='border-0 pointer' style={{ width: '18rem' }}
+                                <Card className='border-0 pointer' style={{ width: '22rem' }}
                                     onClick={() => { navigate(`/detail/${items.idTrip}`) }}
                                 >
                                     <Card.Img className='pointer' variant="top" src={items.image} alt='' />
